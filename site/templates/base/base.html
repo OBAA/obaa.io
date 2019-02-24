@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+{% load static %}
+{% load clean_json %}
+{% load render_bundle from webpack_loader %}
+
+{% block title %}<title>{{title}}</title>{% endblock %}
+
+{% block inner %}
+    <div id={{ component }}>
+
+        <!-- Contents get replaced by mounted React.Component -->
+        <div class="loading w-h">
+            <div>
+                <i class="component fa fa-lg fa-spinner fa-spin"></i><br><br>
+                <h3 class="display xl-txt">Loading components</h3><br><br>
+            </div>
+        </div>
+        <!-- Contents get replaced by mounted React.Component -->
+
+    </div>
+
+    <script>
+        window.props = {{props|json}};  // make sure to escape your props to prevent XSS!
+        window.react_mount = document.getElementById({{ component }});
+    </script>
+
+    {% render_bundle component %}
+{#    {% static component_render %}#}
+
+{% endblock %}
