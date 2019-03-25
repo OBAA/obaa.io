@@ -13,7 +13,7 @@ module.exports = {
 
     output: {
         filename: "[name].js",
-        path: path.resolve('./site/static/dist/'),
+        path: path.resolve('./site/static/prod/'),
     },
 
     plugins: [

@@ -1,0 +1,46 @@
+
+
+/*==============================
+       COMPONENT LOADING
+==============================*/
+
+.loading {
+    align-items: center;
+    background: #212121;
+    color: #22ff22;
+    display: flex;
+    justify-content: center;
+}
+
+.loading .component {
+    margin-left: 50%;
+    margin-right: 50%;
+}
+
+.loading .display {
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+}
+
+.loading .display i {
+    margin-left: 10px;
+}
+
+
+/*==============================
+          PAGE BANNER
+==============================*/
+
+.pg-banner .box a :hover :focus {
+    color: #22ff22;
+}
+
+.pg-banner .box .link :hover {
+    color: #22ff22;
+}
+
+@media (max-width: 767px) {
+    .pg-banner .box {
+        padding: 7px 15px;
+    }
+}

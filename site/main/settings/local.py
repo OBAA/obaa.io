@@ -111,7 +111,7 @@ WEBPACK_LOADER = {
 
 if not DEBUG:
     WEBPACK_LOADER['DEFAULT'].update({
-        'BUNDLE_DIR_NAME': 'dist/',
+        'BUNDLE_DIR_NAME': 'prod/',
         'STATS_FILE': os.path.join(os.path.dirname(BASE_DIR), 'webpack-stats-prod.json')
     })
 
