@@ -33,8 +33,9 @@ wheels/
 *.egg
 
 # Text editor
-.idea/
 idea/
+.idea/
+.idea
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -61,13 +62,16 @@ coverage.xml
 *.mo
 *.pot
 
+# React stuff:
+webpack.config/
+
 # Django stuff:
 *.log
 static_cdn/
-static/bundles/
-local_settings.py
-main/settings/local.py
-main/settings/local_secrets.py
+site/static/bundles/
+site/local_settings.py
+site/main/settings/local.py
+site/main/settings/local_secrets.py
 
 # Flask stuff:
 instance/
@@ -100,6 +104,7 @@ celerybeat-schedule
 env/
 venv/
 ENV/
+site/docker.env
 
 # Spyder project settings
 .spyderproject
