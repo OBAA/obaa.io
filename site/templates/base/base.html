@@ -3,7 +3,10 @@
 {% load clean_json %}
 {% load render_bundle from webpack_loader %}
 
-{% block title %}<title>{{title}}</title>{% endblock %}
+{% block header %}
+    <link rel="stylesheet" href={% static component_css %}>
+    <title>{{title}}</title>
+{% endblock %}
 
 {% block inner %}
     <div id={{ component }}>
@@ -21,7 +24,7 @@
 
     <script>
         window.props = {{props|json}};  // make sure to escape your props to prevent XSS!
-        window.react_mount = document.getElementById({{ component }});
+        window.react_mount = document.getElementById('{{ component }}');
     </script>
 
     {% render_bundle component %}

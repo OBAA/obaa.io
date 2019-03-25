@@ -16,13 +16,13 @@ Including another URLconf
 
 from django.urls import path, include
 from rest_framework import routers
-from blog import views
+from blog import api_views
 
 router = routers.DefaultRouter()
-router.register(r'blogPosts', views.BlogPostView, 'blog')
+router.register(r'blogPosts', api_views.BlogPostView, 'blog')
 
 urlpatterns = [
     # path('/blog/', include(router.urls)),
-    path('blog/', views.BlogPostListCreate.as_view(), ),
+    path('blog/', api_views.BlogPostListCreate.as_view(), ),
 
 ]

@@ -21,15 +21,22 @@ from django.contrib import admin
 from django.urls import path, include
 
 from . import api_urls
-from home import views as home_views
 from blog import urls as blog_urls
+from home import urls as home_urls
 
 
 urlpatterns = [
+    # Admin
     path('admin/', admin.site.urls),
+
+    # API
     path('api/', include(api_urls)),
+
+    # Blog
     path('blog/', include(blog_urls)),
-    path('', home_views.IndexView.as_view()),
+
+    # Home
+    path('', include(home_urls)),
 
 ]
 

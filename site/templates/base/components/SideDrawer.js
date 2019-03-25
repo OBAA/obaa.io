@@ -14,10 +14,13 @@ const SideDrawer = (props) => {
 
             <List component="nav">
                 <ListItem button onClick={()=> console.log("Home")}>
-                    Home
+                    <a href='/'>Home</a>
+                </ListItem>
+                <ListItem button onClick={()=> console.log("Home")}>
+                    <a href='/blog'>Blog</a>
                 </ListItem>
                 <ListItem button onClick={()=> console.log("Projects")}>
-                    Projects
+                    <a href='/portfolio'>Portfolio</a>
                 </ListItem>
                 <ListItem button onClick={()=> console.log("Services")}>
                     Services

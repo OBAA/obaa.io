@@ -1,9 +1,9 @@
-from django.urls import path, include
+from django.urls import path
 
 from . import views as blog_views
 
 
 urlpatterns = [
-    path('', blog_views.IndexView.as_view()),
+    path('', blog_views.BlogListView.as_view()),
 
 ]

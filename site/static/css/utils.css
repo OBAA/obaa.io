@@ -1,0 +1,120 @@
+
+/*==============================
+           FONT FAMILY
+==============================*/
+
+@font-face {
+    font-family:"Anonymous Pro";
+    src:url("../fonts/AnonymousPro-Regular.ttf") format("truetype");
+}
+
+/*@font-face {*/
+    /*font-family:"Anonymous Pro";*/
+    /*src:url("../fonts/AnonymousPro-Italic.ttf") format("truetype");*/
+/*}*/
+
+@font-face {
+    font-family:"Poppins";
+    src:url("../fonts/Poppins-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family:"Roboto";
+    src:url("../fonts/Roboto-Regular-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family:"Roboto";
+    src:url("../fonts/Roboto-Bold-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family:"Ubuntu";
+    src:url("../fonts/Ubuntu-Regular.ttf") format("truetype");
+}
+
+
+/*==============================
+           FONT FAMILY
+==============================*/
+
+.font_roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+.font_anonymous_pro {
+    font-family: 'Anonymous Pro', monospace;
+}
+
+.font_montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.font_ubuntu {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+/*==============================
+           FONT SIZE
+==============================*/
+
+
+/*Font Sizes*/
+.xs-txt {
+    font-size: 12px;
+}
+.s-txt {
+    font-size: 12px;
+}
+.m-txt{
+    font-size: 15px;
+}
+.l-txt{
+    font-size: 25px;
+}
+
+.xl-txt{
+    font-size: 35px;
+}
+
+/*Window height*/
+.w-h {
+    height: 800px;
+}
+
+.h1 {
+    font-size: 35px;
+    font-family: Roboto;
+    color: #22ff22;
+}
+
+.h2 {
+    font-size: 30px;
+    font-family: Ubuntu;
+    color: #22ff22;
+}
+
+.h3 {
+    font-size: 20px;
+    font-family: Ubuntu;
+    color: #22ff22;
+}
+
+
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    padding:0;
+    margin:0;
+    font-family: 'Anonymous Pro', monospace;
+
+}

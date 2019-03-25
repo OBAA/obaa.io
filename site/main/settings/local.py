@@ -1,8 +1,23 @@
 from .base import *
-from .local_secrets import secrets
+from .local_secrets import secrets as local_secret
+
+# DOCKER = False
+#
+# try:
+#     DOCKER = os.getenv('DOCKER')
+# except:
+#     pass
+#
+# if DOCKER:
+#     get_secrets = os.getenv
+# else:
+#     get_secrets = local_secret.get
+
+get_secrets = local_secret.get
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = secrets.get('SECRET_KEY')
+SECRET_KEY = get_secrets('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -57,13 +72,14 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:3000/'
 )
 
-DEFAULT_FROM_EMAIL = secrets.get('DEFAULT_FROM_EMAIL')
-EMAIL_HOST = secrets.get('EMAIL_HOST')
+
+DEFAULT_FROM_EMAIL = get_secrets('DEFAULT_FROM_EMAIL')
+EMAIL_HOST = get_secrets('EMAIL_HOST')
 
 
-EMAIL_HOST_USER = secrets.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = secrets.get('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = secrets.get('EMAIL_PORT')
+EMAIL_HOST_USER = get_secrets('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = get_secrets('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = get_secrets('EMAIL_PORT')
 EMAIL_USE_TLS = True
 
 MANAGERS = (
@@ -100,4 +116,14 @@ if not DEBUG:
     })
 
 
+# Database
+# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 

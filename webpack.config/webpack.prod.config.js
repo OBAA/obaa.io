@@ -6,9 +6,9 @@ module.exports = {
     mode: 'production',
 
     entry: {
-        baseApp: './site/templates/base/base.js',
-        homeApp: './site/home/templates/home/index.js',
-        blogApp: './site/blog/templates/blog/index.js'
+        homeApp: './site/home/templates/home/root.js',
+        blogApp: './site/blog/templates/blog/root.js',
+        authApp: './site/accounts/templates/auth/root.js'
     },
 
     output: {
@@ -18,7 +18,7 @@ module.exports = {
 
     plugins: [
         new MiniCssExtractPlugin({ filename: "style.css",}),
-        new BundleTracker({filename: './webpack.config/webpack-stats-prod.json'}),
+        new BundleTracker({filename: './site/webpack-stats-prod.json'}),
     ],
 
     module: {

@@ -1,4 +1,88 @@
 import React from 'react';
+import styled from 'styled-components'
+
+const WrapperOutter = styled.div`
+    position: absolute;
+    left: 50%;
+    width: 400px;
+    height: 160px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border: 2px solid #2e7d32;
+    
+    @media (max-width: 500px) {
+        width: 300px;
+        height: 120px;
+    }
+`;
+
+const WrapperInner = styled.div`
+    border: 2px solid #2e7d32;
+    height: 121px;
+    margin: 6px;
+    text-align: center;
+    padding: 21px 70px 0 70px;
+    
+    @media (max-width: 500px) {
+        height: 90px;
+        padding: 14px 25px 0 25px;
+    }
+    
+    &:hover ${Name} {
+        color: #22ff22;
+    }
+`;
+
+const Name = styled.div`
+    color: #22ff22;
+    font-size: 35px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    
+    @media (max-width: 500px) {
+        font-size: 25px;
+    }
+`;
+
+const Bio = styled.div`
+    color: #43a047;
+    font-size: 10px;
+    margin-bottom: 5px;
+    
+    @media (max-width: 500px) {
+        font-size: 8px;
+    }
+`;
+
+const SocialIcons = styled.div`
+    display: inline-block;
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: #2e7d32;
+    color: #fff !important;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    margin-right: 1rem;
+    
+    @media (max-width: 500px) {
+        height: 2rem;
+        width: 2rem;
+        font-size: 1rem;
+        line-height: 2rem;
+        margin-right: 0.5rem;
+    }
+    
+    &:last-child {
+        margin-right: 0;
+    }
+    
+    &:hover {
+        background-color: #22ff22;
+    }
+`;
+
 
 const Landing = () => {
     let half_height = `${window.innerHeight/2}px`;
@@ -6,28 +90,30 @@ const Landing = () => {
     return (
         <div style={{height: `${window.innerHeight}px`, background: '#212121'}}>
             <div style={{position: 'relative'}}>
-                <div className="landing" style={{top: half_height}} >
-                    <div className="wrapper font_roboto">
-                        <div className="title">Agbana Bolu</div>
-                        <div className="sub">fullstack developer | tech enthusiast | entrepreneur</div>
-                        {/*<div>*/}
-                            <div className="social-icons">
-                                <a href="#">
-                                    <i className="fab fa-linkedin-in"></i>
-                                </a>
-                                <a href="#">
-                                    <i className="fab fa-github"></i>
-                                </a>
-                                <a href="#">
-                                    <i className="fab fa-twitter"></i>
-                                </a>
-                                <a href="#">
-                                    <i className="fab fa-facebook-f"></i>
-                                </a>
-                            </div>
-                        {/*</div>*/}
-                    </div>
-                </div>
+                <WrapperOutter style={{top: half_height}} >
+                    <WrapperInner className="font_roboto">
+                        <Name>
+                            Agbana Bolu
+                        </Name>
+                        <Bio>
+                            fullstack developer | tech enthusiast | entrepreneur
+                        </Bio>
+                        <div>
+                            <SocialIcons href="#">
+                                <i className="fab fa-linkedin-in"></i>
+                            </SocialIcons>
+                            <SocialIcons href="#">
+                                <i className="fab fa-github"></i>
+                            </SocialIcons>
+                            <SocialIcons href="#">
+                                <i className="fab fa-twitter"></i>
+                            </SocialIcons>
+                            <SocialIcons href="#">
+                                <i className="fab fa-facebook-f"></i>
+                            </SocialIcons>
+                        </div>
+                    </WrapperInner>
+                </WrapperOutter>
             </div>
         </div>
     );

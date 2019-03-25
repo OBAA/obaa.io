@@ -7,5 +7,6 @@ secrets = {
     'EMAIL_HOST_USER': 'itsobaa@gmail.com',
     'EMAIL_HOST_PASSWORD': 'Naruto2015@21',
     "EMAIL_PORT": 587,
+
 }
 

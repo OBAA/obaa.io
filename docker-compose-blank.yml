@@ -1,0 +1,44 @@
+version: '3.7'
+
+services:
+
+  webApp:
+#    build: ./site
+#    image: obaa.io:v1.1
+    build:
+      context: ./site
+      dockerfile: site/Dockerfile-alt
+    image: obaa.io:v1.2
+    container_name: webApp-dev
+    command: python /usr/src/obaa.io/manage.py runserver 0.0.0.0:8080
+#    command: /usr/local/bin/gunicorn main.wsgi:application -w 2 -b :8000
+    volumes:
+      - ./site/:/usr/src/obaa.io/
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+#    restart: always
+
+#    check
+#    environment:
+#      - SECRET_KEY=''
+    env_file: ./site/docker.env
+
+#  nginx:
+#    build: ./nginx
+#    ports:
+#      - 8000:80
+#    volumes:
+#      - ./nginx/conf.d:/etc/nginx/conf.d
+#    depends_on:  # <-- wait for web to be "ready" before starting this service
+#      - web
+
+  db:
+    image: postgres:10.5-alpine
+    container_name: webApp-dev-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:

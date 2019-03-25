@@ -6,9 +6,9 @@ module.exports = {
     mode: 'development',
 
     entry: {
-        baseApp: './site/templates/base/base.js',
-        homeApp: './site/home/templates/home/index.js',
-        blogApp: './site/blog/templates/blog/index.js',
+        homeApp: './site/home/templates/home/root.js',
+        blogApp: './site/blog/templates/blog/root.js',
+        authApp: './site/accounts/templates/auth/root.js',
         devServer: 'webpack-dev-server/client?http://localhost:5000'
     },
 
@@ -19,13 +19,12 @@ module.exports = {
     },
 
     plugins: [
-        // new BundleTracker({filename: './webpack.config/webpack-stats.json'}),
-        new BundleTracker({filename: './webpack-stats.json'}),
+        new BundleTracker({filename: './site/webpack-stats.json'}),
         new webpack.HotModuleReplacementPlugin(),
     ],
 
     devServer: {
-        contentBase: './site/static/bundles',
+        contentBase: './site/static/bundles/',
         hot: true
     },
 
