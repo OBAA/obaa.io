@@ -70,8 +70,6 @@ bundles/
 # Django stuff:
 *.log
 static_cdn/
-site/static/bundles/
-site/local_settings.py
 site/main/settings/local.py
 site/main/settings/local_secrets.py
 
@@ -102,11 +100,12 @@ celerybeat-schedule
 
 # Environments
 .env
+*.env
 .venv
 env/
 venv/
 ENV/
-docker.env
+
 
 # Spyder project settings
 .spyderproject
@@ -120,6 +119,3 @@ docker.env
 
 # mypy
 .mypy_cache/
-
-# Node dependencies; npm
-node_modules/
