@@ -114,6 +114,7 @@ class Header extends Component {
 
                     <SideDrawer
                         open={this.state.drawerOpen}
+                        onOpen={()=> this.toggleDrawer(true)}
                         onClose={()=> this.toggleDrawer(false)}
                     />
 

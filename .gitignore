@@ -63,6 +63,7 @@ coverage.xml
 *.pot
 
 # React stuff:
+blank.js
 bundles/
 # webpack.config/
 

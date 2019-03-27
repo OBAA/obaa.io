@@ -147,8 +147,10 @@ const Topic = styled.div`
 const Meta = styled.div`
     margin-top: 10px;
     color: #2e7d32;
+    font-size: 13px;
     
     @media (max-width: 780px) {
+        font-size: 15px;
     }
 `;
 

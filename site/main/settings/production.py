@@ -9,7 +9,7 @@ SECRET_KEY = get_secret('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "obaa.xyz"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "178.62.76.148", "obaa.xyz"]
 
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -56,7 +56,7 @@ MIDDLEWARE = [
 
 # We whitelist localhost:3000 because that's where frontend will be served
 CORS_ORIGIN_WHITELIST = (
-    'localhost:3000/'
+    'localhost:5000/'
 )
 
 
@@ -74,7 +74,6 @@ MANAGERS = (
     ('OBAA', get_secret('MANAGER_EMAIL')),
 )
 ADMINS = MANAGERS
-
 
 WEBPACK_LOADER = {
     'DEFAULT': {

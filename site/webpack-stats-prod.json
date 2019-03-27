@@ -1,1 +1,29 @@
-{"status":"done","chunks":{"authApp":[{"name":"authApp.js","path":"C:\\Users\\OBAA\\documents\\projects\\websites\\obaa.io\\site\\static\\dist\\authApp.js"}],"blogApp":[{"name":"style.css","path":"C:\\Users\\OBAA\\documents\\projects\\websites\\obaa.io\\site\\static\\dist\\style.css"},{"name":"blogApp.js","path":"C:\\Users\\OBAA\\documents\\projects\\websites\\obaa.io\\site\\static\\dist\\blogApp.js"}],"homeApp":[{"name":"style.css","path":"C:\\Users\\OBAA\\documents\\projects\\websites\\obaa.io\\site\\static\\dist\\style.css"},{"name":"homeApp.js","path":"C:\\Users\\OBAA\\documents\\projects\\websites\\obaa.io\\site\\static\\dist\\homeApp.js"}]}}
+{
+  "status":"done",
+  "publicPath":"/",
+  "chunks": {
+    "authApp":[
+      {
+        "name":"authApp.js",
+        "publicPath":"/static/prod/authApp.js",
+        "path":"C:\\Users\\OBAA\\documents\\projects\\websites\\obaa.io\\site\\static\\prod\\authApp.js"
+      }
+    ],
+
+    "blogApp": [
+      {
+        "name":"blogApp.js",
+        "publicPath":"/static/prod/blogApp.js",
+        "path":"C:\\Users\\OBAA\\documents\\projects\\websites\\obaa.io\\site\\static\\prod\\blogApp.js"
+      }
+    ],
+
+    "homeApp": [
+      {
+        "name":"homeApp.js",
+        "publicPath":"http://127.0.0.1:8000/site/static/prod/homeApp.js",
+        "path":"C:\\Users\\OBAA\\documents\\projects\\websites\\obaa.io\\site\\static\\prod\\homeApp.js"
+      }
+    ]
+  }
+}

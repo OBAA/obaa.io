@@ -1,17 +1,6 @@
+import mimetypes
 from .base import *
 from .local_secrets import secrets as local_secret
-
-# DOCKER = False
-#
-# try:
-#     DOCKER = os.getenv('DOCKER')
-# except:
-#     pass
-#
-# if DOCKER:
-#     get_secrets = os.getenv
-# else:
-#     get_secrets = local_secret.get
 
 get_secrets = local_secret.get
 
@@ -22,7 +11,7 @@ SECRET_KEY = get_secrets('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "178.62.76.148"]
 
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -69,7 +58,7 @@ MIDDLEWARE = [
 
 # We whitelist localhost:3000 because that's where frontend will be served
 CORS_ORIGIN_WHITELIST = (
-    'localhost:3000/'
+    'localhost:5000/'
 )
 
 
@@ -88,31 +77,19 @@ MANAGERS = (
 
 ADMINS = MANAGERS
 
-# WEBPACK_LOADER = {
-#     'DEFAULT': {
-#         'BUNDLE_DIR_NAME': 'bundles/',
-#         'STATS_FILE': os.path.join(os.path.dirname(BASE_DIR), 'webpack.config', 'webpack-stats.json'),
-#     }
-# }
-#
-# if not DEBUG:
-#     WEBPACK_LOADER['DEFAULT'].update({
-#         'BUNDLE_DIR_NAME': 'dist/',
-#         'STATS_FILE': os.path.join(BASE_DIR, 'webpack.config', 'webpack-stats-prod.json')
-#     })
-
 
 WEBPACK_LOADER = {
     'DEFAULT': {
         'BUNDLE_DIR_NAME': 'bundles/',
-        'STATS_FILE': os.path.join(os.path.dirname(BASE_DIR), 'webpack-stats.json'),
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
     }
 }
 
 if not DEBUG:
     WEBPACK_LOADER['DEFAULT'].update({
         'BUNDLE_DIR_NAME': 'prod/',
-        'STATS_FILE': os.path.join(os.path.dirname(BASE_DIR), 'webpack-stats-prod.json')
+        # 'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats-p.json'),
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats-prod.json')
     })
 
 
@@ -127,3 +104,5 @@ DATABASES = {
     }
 }
 
+# Fix CSS mimetypes
+mimetypes.add_type("text/css", ".css", True)

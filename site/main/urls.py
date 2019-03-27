@@ -27,19 +27,22 @@ from home import urls as home_urls
 
 urlpatterns = [
     # Admin
-    path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
 
     # API
-    path('api/', include(api_urls)),
+    path('api', include(api_urls)),
 
     # Blog
-    path('blog/', include(blog_urls)),
+    path('blog', include(blog_urls)),
 
     # Home
     path('', include(home_urls)),
 
 ]
 
-if settings.DEBUG:
-    urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# if settings.DEBUG:
+#     urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+#     urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
