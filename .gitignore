@@ -67,6 +67,8 @@ blank.js
 bundles/
 prod/
 v8-compile-cache-0/
+site/webpack-stats.json
+site/webpack-stats-prod.json
 
 # Django stuff:
 *.log
