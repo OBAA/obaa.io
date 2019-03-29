@@ -75,40 +75,63 @@ MANAGERS = (
 )
 ADMINS = MANAGERS
 
-WEBPACK_LOADER = {
-    'DEFAULT': {
-        'BUNDLE_DIR_NAME': 'bundles/',
-        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
-    }
-}
 
-if not DEBUG:
-    WEBPACK_LOADER['DEFAULT'].update({
-        'BUNDLE_DIR_NAME': 'prod/',
-        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats-prod.json')
-    })
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "media_root")
+
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "static_root")
+
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+if DEBUG:
+    WEBPACK_LOADER = {
+        'DEFAULT': {
+            'BUNDLE_DIR_NAME': 'bundles/',
+            'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+        }
+    }
+
+else:
+    WEBPACK_LOADER = {
+        'DEFAULT': {
+            'BUNDLE_DIR_NAME': 'prod/',
+            'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats-prod.json'),
+        }
+    }
+
+# if not DEBUG:
+#     WEBPACK_LOADER['DEFAULT'].update({
+#         'BUNDLE_DIR_NAME': 'prod/',
+#         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats-prod.json')
+#     })
 
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
+    }
+}
+
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'postgres',
-#         'USER': 'postgres',
-#         'HOST': 'db',
-#         'PORT': 5432,
+#         'ENGINE': get_secret('DATABASE_ENGINE'),
+#         'NAME': get_secret('DATABASE_NAME'),
+#         'USER': get_secret('DATABASE_USER'),
+#         'PASSWORD': get_secret('DATABASE_PASSWORD'),
+#         'HOST': get_secret('DATABASE_HOST'),
+#         'PORT': get_secret('DATABASE_PORT'),
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': get_secret('DATABASE_ENGINE'),
-        'NAME': get_secret('DATABASE_NAME'),
-        'USER': get_secret('DATABASE_USER'),
-        'PASSWORD': get_secret('DATABASE_PASSWORD'),
-        'HOST': get_secret('DATABASE_HOST'),
-        'PORT': get_secret('DATABASE_PORT'),
-    }
-}

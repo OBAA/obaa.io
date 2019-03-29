@@ -65,7 +65,8 @@ coverage.xml
 # React stuff:
 blank.js
 bundles/
-# webpack.config/
+prod/
+v8-compile-cache-0/
 
 # Django stuff:
 *.log

@@ -3,39 +3,41 @@ version: '3.7'
 services:
 
   webApp:
-    container_name: webApp-dev
     build: ./site
-    image: obaa.io:v1.2
-    command: python /usr/src/obaa.io/manage.py runserver 0.0.0.0:8080
-#    command: python /usr/src/obaa.io/manage.py runserver 0.0.0.0:8080 --settings=main.settings.production
-#    command: /usr/local/bin/gunicorn main.wsgi:application -w 2 -b :8080
+    container_name: webApp
+    image: obaa.io:v1.1
+    command: gunicorn main.wsgi:application --bind 0.0.0.0:8080
+#    command: python /usr/src/obaa.io/manage.py runserver 0.0.0.0:80
     depends_on:
       - db
+    expose:
+      - 8080
     env_file: ./site/docker.env
     volumes:
       - ./site/:/usr/src/obaa.io/
-      - ./static_cdn/:/usr/src/static_cdn/
+      - ./static_cdn/static_root/:/usr/src/static_cdn/static_root/
+      - static_volume:/usr/src/static_cdn/static_root/
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    image: nginx:v1.0
     ports:
-      - 8080:8080
-#    restart: always
-
-
-
-
-#  nginx:
-#    build: ./nginx
-#    ports:
-#      - 8000:80
-#    volumes:
-#      - ./nginx/conf.d:/etc/nginx/conf.d
-#    depends_on:  # <-- wait for web to be "ready" before starting this service
-#      - web
+      - 80:80
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./static_cdn/static_root/:/usr/src/static_cdn/static_root/
+      - static_volume:/usr/src/static_cdn/static_root/
+    depends_on:
+      - webApp
 
   db:
-    image: postgres:10.5-alpine
-    container_name: webApp-dev-db
+    container_name: webApp_db
+    image: postgres:alpine
+    env_file: ./site/docker.env
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 
 volumes:
   postgres_data:
+  static_volume:

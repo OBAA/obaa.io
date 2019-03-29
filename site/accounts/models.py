@@ -65,7 +65,7 @@ class User(AbstractBaseUser):
     # USERNAME_FIELD and password are required by default.
 
     # Sets fields required at Sign-up
-    REQUIRED_FIELDS = ['email']
+    # REQUIRED_FIELDS = ['email']
 
     objects = UserManager()
 

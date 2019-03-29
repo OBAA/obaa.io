@@ -220,6 +220,10 @@ const StacksFooter = styled.div`
 const Icon = styled.i`
     font-size: 2.5rem;
     margin-bottom: 5px;
+    
+    @media (max-width: 500px) {
+        font-size: 2.2rem;
+    }
 `;
 
 class About extends Component {
