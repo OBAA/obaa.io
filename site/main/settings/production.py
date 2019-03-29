@@ -9,7 +9,7 @@ SECRET_KEY = get_secret('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "178.62.76.148", "obaa.xyz"]
+ALLOWED_HOSTS = [get_secret('ALLOWED_HOSTS')]
 
 AUTH_USER_MODEL = 'accounts.User'
 
