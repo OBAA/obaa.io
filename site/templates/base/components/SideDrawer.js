@@ -10,6 +10,7 @@ const SideDrawer = (props) => {
         <SwipeableDrawer
             anchor="left"
             open={props.open}
+            onOpen={()=> props.onOpen(true)}
             onClose={()=> props.onClose(false)} >
 
             <List component="nav">

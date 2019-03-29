@@ -9,10 +9,11 @@ import '../../../static/css/main.css';
 
 import Header from '../../../templates/base/components/Header';
 import Banner from '../../../templates/base/components/Banner';
-import Carousel from '../../../templates/base/components/Carousel';
+// import Carousel from '../../../templates/base/components/Carousel';
 import BlogList from './components/BlogList';
 import Categories from './components/Categories';
 import Tags from './components/Tags';
+import Footer from '../../../templates/base/components/Footer'
 
 
     // background: #F0F0F0;
@@ -35,10 +36,10 @@ const muiTheme = createMuiTheme({
     }
 });
 
-const Div = styled.div`
-    height: 4000px;
-    background: grey;
-`;
+// const Div = styled.div`
+//     height: 4000px;
+//     background: grey;
+// `;
 
 
 class App extends Component {
@@ -52,17 +53,15 @@ class App extends Component {
 
     render() {
         return (
-            <Div>
+            <div>
                 <Header styles={this.styles.logo} muiTheme={muiTheme} />
                 <Banner title='blog'/>
-                {/*<Carousel/>*/}
-
                 <BlogList/>
                 <Categories/>
                 <Tags/>
 
-
-            </Div>
+                <Footer/>
+            </div>
         );
     }
 }

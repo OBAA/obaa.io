@@ -27,13 +27,13 @@ from home import urls as home_urls
 
 urlpatterns = [
     # Admin
-    path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
 
     # API
-    path('api/', include(api_urls)),
+    path('api', include(api_urls)),
 
     # Blog
-    path('blog/', include(blog_urls)),
+    path('blog', include(blog_urls)),
 
     # Home
     path('', include(home_urls)),

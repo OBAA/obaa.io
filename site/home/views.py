@@ -1,5 +1,8 @@
+from django.conf import settings
 from django.shortcuts import render
 from django.views import View
+
+DEBUG = getattr(settings, "DEBUG")
 
 
 # Create your views here.
@@ -8,8 +11,11 @@ class IndexView(View):
     title = 'OBAA.IO | Digital Services'
     template = 'base/base.html'
     component = 'homeApp'
-    component_css = 'home/App.css'
-    component_render = 'bundles/homeApp.js'  # Static render. No hot reload
+    if DEBUG:
+        component_render = 'bundles/homeApp.js'  # Static render. No hot reload
+    else:
+        component_render = 'prod/homeApp.js'
+        # component_render = 'bundles/homeApp.js'
 
     def get(self, request):
         """
@@ -27,9 +33,9 @@ class IndexView(View):
         context = {
             'title': self.title,
             'component': self.component,
-            'component_css': self.component_css,
             'component_render': self.component_render,
             'props': props,
+            'debug': DEBUG
         }
 
         return render(request, self.template, context)
