@@ -75,6 +75,9 @@ site/webpack-stats-prod.json
 static_cdn/
 site/main/settings/local.py
 site/main/settings/local_secrets.py
+# site/home/templates/home/components
+
+**/untracked
 
 # Flask stuff:
 instance/
