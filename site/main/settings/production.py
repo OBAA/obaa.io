@@ -9,11 +9,9 @@ SECRET_KEY = get_secret('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "obaa.xyz"]
+ALLOWED_HOSTS = ["obaa.xyz"]
 
 AUTH_USER_MODEL = 'accounts.User'
-
-BASE_URL = '127.0.0.1:8000'
 
 # Application definition
 
@@ -104,13 +102,11 @@ else:
         }
     }
 
-# else:
-#     WEBPACK_LOADER = {
-#         'DEFAULT': {
-#             'BUNDLE_DIR_NAME': 'test/',
-#             'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats-test.json'),
-#         }
-#     }
+# if not DEBUG:
+#     WEBPACK_LOADER['DEFAULT'].update({
+#         'BUNDLE_DIR_NAME': 'prod/',
+#         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats-prod.json')
+#     })
 
 
 # Database

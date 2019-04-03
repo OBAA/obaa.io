@@ -5,13 +5,13 @@ services:
   webApp:
     build: ./site
     container_name: webApp
-    image: obaa.io:v1.0
-    command: gunicorn main.wsgi:application --bind 0.0.0.0:8000
+    image: obaa.io:v1.1
+    command: gunicorn main.wsgi:application --bind 0.0.0.0:8080
 #    command: python /usr/src/obaa.io/manage.py runserver 0.0.0.0:80
     depends_on:
       - db
     expose:
-      - 8000
+      - 8080
     env_file: ./site/docker.env
     volumes:
       - ./site/:/usr/src/obaa.io/
@@ -23,7 +23,7 @@ services:
     container_name: nginx
     image: nginx:v1.0
     ports:
-      - 8080:80
+      - 80:80
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./static_cdn/static_root/:/usr/src/static_cdn/static_root/
@@ -33,7 +33,7 @@ services:
 
   db:
     container_name: webApp_db
-    image: postgres:10.5-alpine
+    image: postgres:alpine
     env_file: ./site/docker.env
     volumes:
       - postgres_data:/var/lib/postgresql/data/
