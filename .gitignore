@@ -63,8 +63,8 @@ coverage.xml
 *.pot
 
 # Docker
-docker-compose.yml
-nginx/conf.d/local.conf
+# docker-compose.yml
+# nginx/conf.d/local.conf
 
 # React stuff:
 blank.js
