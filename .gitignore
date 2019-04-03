@@ -63,8 +63,9 @@ coverage.xml
 *.pot
 
 # Docker
-# docker-compose.yml
-# nginx/conf.d/local.conf
+**Dockerfile
+docker-compose.yml
+nginx/conf.d/local.conf
 
 # React stuff:
 blank.js
@@ -73,15 +74,14 @@ prod/
 v8-compile-cache-0/
 site/webpack-stats.json
 site/webpack-stats-prod.json
+**/untracked
 
 # Django stuff:
 *.log
 static_cdn/
 site/main/settings/local.py
+site/main/settings/local_docker.py
 site/main/settings/local_secrets.py
-# site/home/templates/home/components
-
-**/untracked
 
 # Flask stuff:
 instance/
