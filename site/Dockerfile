@@ -29,21 +29,7 @@ RUN apk add --no-cache --virtual .build-deps \
     && apk add --virtual .rundeps $runDeps \
     && apk del .build-deps
 
-
-# copy entrypoint.sh
-#COPY ./entrypoint.sh /usr/src/obaa.io/entrypoint.sh
-
 # Copy project
 COPY . /usr/src/obaa.io/
 
-# run entrypoint.sh
-#ENTRYPOINT ["/usr/src/obaa.io/entrypoint.sh"]
-
-# Copy gunicorn_start
-# COPY gunicorn_start /usr/bin/
-
-# Make neccessary directories.
-#RUN mkdir -p /usr/src/obaa.io/live/logs/ \
-#    && touch /usr/src/obaa.io/live/logs/gunicorn-error.log \
-#    && mkdir -p usr/run/ \
 

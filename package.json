@@ -7,7 +7,8 @@
     "watch": "node ./webpack.config/server.js",
     "build-n-watch": "webpack --mode development --config ./webpack.config/webpack.dev.config.js --watch --progress --colors",
     "build": "webpack --mode development --config ./webpack.config/webpack.dev.config.js --progress --colors",
-    "build-prod": "webpack --mode production --config ./webpack.config/webpack.prod.config.js --progress --colors"
+    "build-prod": "webpack --mode production --config ./webpack.config/webpack.prod.config.js --progress --colors",
+    "build-test": "webpack --mode production --config ./webpack.config/blank.js --progress --colors"
   },
   "keywords": [],
   "author": "",
@@ -34,7 +35,8 @@
     "webpack": "^4.29.5",
     "webpack-bundle-tracker": "^0.4.2-beta",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "webpack-split-by-path": "^2.0.0"
   },
   "dependencies": {
     "@material-ui/core": "^1.4.3",

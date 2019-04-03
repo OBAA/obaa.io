@@ -54,7 +54,7 @@ const Bio = styled.div`
     }
 `;
 
-const SocialIcons = styled.div`
+const SocialIcons = styled.a`
     display: inline-block;
     height: 2.5rem;
     width: 2.5rem;
@@ -88,7 +88,8 @@ const Landing = () => {
     let half_height = `${window.innerHeight/2}px`;
 
     return (
-        <div style={{height: `${window.innerHeight}px`, background: '#212121'}}>
+        <div style={{height: '950px', background: '#212121'}}>
+        // {/*<div style={{height: `${window.innerHeight}px`, background: '#212121'}}>*/}
             <div style={{position: 'relative'}}>
                 <WrapperOutter style={{top: half_height}} >
                     <WrapperInner className="font_roboto">
@@ -99,17 +100,17 @@ const Landing = () => {
                             fullstack developer | tech enthusiast | entrepreneur
                         </Bio>
                         <div>
-                            <SocialIcons href="#">
+                            <SocialIcons href="https://www.linkedin.com/in/agbana-bolu/" target="_blank">
                                 <i className="fab fa-linkedin-in"></i>
                             </SocialIcons>
-                            <SocialIcons href="#">
+                            <SocialIcons href="https://github.com/OBAA/" target="_blank">
                                 <i className="fab fa-github"></i>
                             </SocialIcons>
-                            <SocialIcons href="#">
+                            <SocialIcons >
                                 <i className="fab fa-twitter"></i>
                             </SocialIcons>
-                            <SocialIcons href="#">
-                                <i className="fab fa-facebook-f"></i>
+                            <SocialIcons href="https://www.instagram.com/iam.obaa/" target="_blank">
+                                <i className="fab fa-instagram"></i>
                             </SocialIcons>
                         </div>
                     </WrapperInner>

@@ -59,8 +59,6 @@
            FONT SIZE
 ==============================*/
 
-
-/*Font Sizes*/
 .xs-txt {
     font-size: 12px;
 }
@@ -78,10 +76,19 @@
     font-size: 35px;
 }
 
-/*Window height*/
+
+/*==============================
+           WINDOW HEIGHT
+==============================*/
+
 .w-h {
     height: 800px;
 }
+
+
+/*==============================
+           TYPOGRAPHY
+==============================*/
 
 .h1 {
     font-size: 35px;
@@ -101,15 +108,20 @@
     color: #22ff22;
 }
 
-
-
 .capitalize {
     text-transform: capitalize;
 }
 
+
+/*==============================
+           BODY
+==============================*/
+
 html, body {
     max-width: 100%;
+    /*overflow: hidden;*/
     overflow-x: hidden;
+    /*overflow-y: visible;*/
 }
 
 body {
@@ -117,4 +129,22 @@ body {
     margin:0;
     font-family: 'Anonymous Pro', monospace;
 
+}
+
+
+/*==============================
+           PLACE HOLDER
+==============================*/
+
+::placeholder {
+  color: #22ff22;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: #22ff22;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: #22ff22;
 }

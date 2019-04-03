@@ -18,7 +18,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, re_path, include
 
 from . import api_urls
 from blog import urls as blog_urls
@@ -27,7 +27,8 @@ from home import urls as home_urls
 
 urlpatterns = [
     # Admin
-    path('admin', admin.site.urls),
+    # path('alibaba', admin.site.urls),
+    re_path(r'^alibaba/', admin.site.urls),
 
     # API
     path('api', include(api_urls)),

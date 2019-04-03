@@ -11,6 +11,7 @@ class BlogListView(ListView):
     template_name = 'base/base.html'
     title = 'Blog | OBAA.IO'
     component = 'blogApp'
+
     if DEBUG:
         component_render = 'bundles/blogApp.js'  # Static render. No hot reload
     else:

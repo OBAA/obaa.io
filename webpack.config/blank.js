@@ -1,24 +1,7 @@
-///////////////////////////////////////////////
-//                 BABEL.RC                  //
-///////////////////////////////////////////////
-
-// {
-//     "presets": [
-//         "@babel/preset-env", "@babel/preset-react"
-//     ],
-//     "plugins": [
-//         "react-hot-loader/babel",
-//         "transform-class-properties"
-//     ]
-// }
-
-///////////////////////////////////////////////
-///////////////////////////////////////////////
-
-
 const path = require("path");
 const BundleTracker = require('webpack-bundle-tracker');
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'production',
@@ -30,92 +13,45 @@ module.exports = {
     },
 
     output: {
-        filename: "[name].js",
-        path: path.resolve('./site/static/prod/'),
-        publicPath: '/static/prod/'
+        filename: '[name].js',
+        path: path.resolve('./site/static/test/'),
+        publicPath: '/static/test/'
     },
 
+    // optimization: {
+    //     splitChunks: {
+    //         chunks: 'all',
+    //     },
+    // },
+
     plugins: [
+        new BundleTracker({filename: './site/webpack-stats-test.json'}),
         // new MiniCssExtractPlugin({ filename: "style.css",}),
 
-        // // removes a lot of debugging code in React
-        // new webpack.DefinePlugin({
-        //     'process.env': {
-        //         'NODE_ENV': JSON.stringify('production')
-        //     }}),
-        //
-        // // keeps hashes consistent between compilations
-        // new webpack.optimize.OccurenceOrderPlugin(),
-        //
-        // // minifies your code
-        // new webpack.optimize.UglifyJsPlugin({
-        //     compressor: {
-        //         warnings: false
-        //     }
-        // }),
+        new HTMLWebpackPlugin({
+            // hash: true,
+            // title: 'My Awesome application',
+            // myPageHeader: 'Hello World',
+            // template: './site/templates/index.html',
+            filename: './index.txt' //relative to root of the application
+        })
 
-        new BundleTracker({filename: './site/webpack-stats-prod.json'}),
     ],
 
     module: {
         rules: [
-            // {
-            //     test: /\.(js|jsx)$/,
-            //     // include: [
-            //     //     path.resolve(__dirname, 'site')
-            //     // ],
-            //     exclude: /node_modules/,
-            //     use: [{
-            //         loader: 'babel-loader',
-            //         options: {
-            //             cacheDirectory: true,
-            //             babelrc: false,
-            //             presets: [
-            //                 "@babel/preset-env",
-            //                 "@babel/preset-react",
-            //                 ["@babel/env", {
-            //                     "targets": {
-            //                         'browsers': ['Chrome >=59']
-            //                     },
-            //                     "modules":false,
-            //                     "loose":true
-            //                 }],
-            //                 "@babel/react"
-            //             ],
-            //
-            //             plugins: [
-            //                 "react-hot-loader/babel",
-            //                 "transform-class-properties",
-            //                 ["import",
-            //                     {
-            //                         libraryName: "antd",
-            //                         style: "css"
-            //                     }],
-            //                 "@babel/proposal-object-rest-spread"
-            //
-            //             ]
-            //         }
-            //     }
-            //     ]
-            //
-            // },
             {
                 test: /\.(js|jsx)$/,
-
                 exclude: /node_modules/,
-                loader: "babel-loader",
-                query:
-                    {
-                        presets:[
-                            '@babel/react',
-                            // "@babel/preset-env",
-                            // "@babel/preset-react"
-                        ]
-                    },
-
-                // exclude: /node_modules/,
-                // use: ['babel-loader'] // to transform JSX into JS
+                use: ['babel-loader'] // to transform JSX into JS
             },
+
+            // {
+            //     test: /\.css$/,
+            //     // use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader']
+            //     use: ['style-loader', 'css-loader']
+            // },
+
             {
                 test: /\.css$/,
                 use: [
@@ -128,6 +64,7 @@ module.exports = {
                         }
                     }]
             },
+
             {
                 test: /\.(png|jpg|gif)$/i,
                 use: [
@@ -142,30 +79,6 @@ module.exports = {
             }
 
         ]
-
-        // rules: [
-        //     {
-        //         test: /\.(js|jsx)$/,
-        //         exclude: /node_modules/,
-        //         use: ['babel-loader'] // to transform JSX into JS
-        //     },
-        //     {
-        //         test: /\.css$/,
-        //         use:  ['style-loader', MiniCssExtractPlugin.loader, 'css-loader']
-        //     },
-        //     {
-        //         test: /\.(png|jpg|gif)$/i,
-        //         use: [
-        //             {
-        //                 loader: 'url-loader',
-        //                 options: {
-        //                     limit: 8192,
-        //                     name: 'img/[name].[ext]'
-        //                 }
-        //             }
-        //         ]
-        //     }
-        // ]
-
     },
 };
+

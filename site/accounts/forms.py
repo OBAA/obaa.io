@@ -51,7 +51,7 @@ class SignUpForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'password1', 'password2', )
+        fields = ('username', 'email', 'password1', 'password2', )
 
     def clean_password1(self):
         # Validate password using built-in Django validator.

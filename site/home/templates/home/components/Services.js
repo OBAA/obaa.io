@@ -13,6 +13,7 @@ const Section = styled.div`
     
     @media (min-width: 780px) {
         height: ${WindowHeight};
+        height: 800px;
     }
 `;
 
@@ -139,8 +140,8 @@ const Service = styled.div`
 `;
 
 const InnerWrapper = styled.div`
-    // padding: 15px 15px;
-    padding: 25px 15px;
+    // padding: 25px 15px;
+    padding: 25px 25px 25px 15px;
     display: flex;
     flex-direction: column;
 `;
@@ -160,6 +161,7 @@ const ServiceType = styled.div`
 
 const Details = styled.div`
     font-size: 12px;
+    font-size: 14px;
     // margin-bottom: 15px;
 `;
 

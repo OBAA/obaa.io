@@ -1,6 +1,10 @@
+import json
 from django.conf import settings
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.views import View
+from django.middleware.csrf import get_token
+from .forms import ContactMeForm
 
 DEBUG = getattr(settings, "DEBUG")
 
@@ -15,7 +19,6 @@ class IndexView(View):
         component_render = 'bundles/homeApp.js'  # Static render. No hot reload
     else:
         component_render = 'prod/homeApp.js'
-        # component_render = 'bundles/homeApp.js'
 
     def get(self, request):
         """
@@ -23,11 +26,12 @@ class IndexView(View):
 
         """
         props = {
+            'auth': True,
+            'csrfToken': get_token(request),
             'users': [
                 {'username': 'alice'},
                 {'username': 'bob'},
             ],
-            'auth': True,
         }
 
         context = {
@@ -41,33 +45,28 @@ class IndexView(View):
         return render(request, self.template, context)
 
 
-# class PortfolioView(View):
-#     title = 'Portfolio | OBAA.IO'
-#     template = 'base/base.html'
-#     component = 'portfolioApp'
-#     component_css = 'home/portfolioApp.css'
-#     component_render = 'bundles/homeApp.js'  # Static render. No hot reload
-# 
-#     def get(self, request):
-#         """
-#         Props are passed to React via window.props
-#
-#         """
-#         props = {
-#             'users': [
-#                 {'username': 'alice'},
-#                 {'username': 'bob'},
-#             ],
-#             'auth': True,
-#         }
-#
-#         context = {
-#             'title': self.title,
-#             'component': self.component,
-#             'component_css': self.component_css,
-#             'component_render': self.component_render,
-#             'props': props,
-#         }
-#
-#         return render(request, self.template, context)
+class ContactMeView(View):
+    form_class = ContactMeForm
 
+    def post(self, request, *args, **kwargs):
+        form = ContactMeForm()
+
+        # Receive POST request from React frontend
+        json_data = json.loads(request.body)
+
+        # Initiate Form instance
+        obj = form.save(commit=False)
+        obj.full_name = json_data['fullname']
+        obj.email = json_data['email']
+        obj.message = json_data['message']
+        obj.save()
+
+        response = {
+            'message': {
+                'title': 'Message Delivered.',
+                'content': "Your message was sent successfully. Give at least 24hrs "
+                           "for a response. Thank you.",
+            },
+        }
+
+        return JsonResponse(response, safe=False)

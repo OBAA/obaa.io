@@ -6,10 +6,11 @@ from django.db.models.signals import pre_save, post_save
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, username, password=None, level='Member', is_staff=False, is_admin=False):
+    def create_user(self, username, email, password=None, level='member', is_staff=False, is_admin=False):
 
         user_obj = self.model(
             username=username,
+            email=email
         )
         user_obj.set_password(password)
         user_obj.level = level
@@ -19,30 +20,32 @@ class UserManager(BaseUserManager):
         user_obj.save(using=self._db)
         return user_obj
 
-    def create_staffuser(self, username, password=None):
+    def create_staffuser(self, username, email, password=None):
         user = self.create_user(
             username,
+            email,
             password=password,
             is_staff=True,
-            level='Staff',
+            level='staff',
         )
         return user
 
-    def create_superuser(self, username, password=None):
+    def create_superuser(self, username, email, password=None):
         user = self.create_user(
             username,
+            email,
             password=password,
             is_staff=True,
             is_admin=True,
-            level='Admin'
+            level='admin'
         )
         return user
 
 
 USER_LEVEL = (
-    ('Administrator', 'Admin'),
-    ('Staff', 'Staff'),
-    ('Member', 'Member'),
+    ('Administrator', 'admin'),
+    ('Staff', 'staff'),
+    ('Member', 'member'),
 )
 
 
@@ -52,7 +55,7 @@ class User(AbstractBaseUser):
     last_name       = models.CharField(max_length=120, blank=True)
     email           = models.EmailField(max_length=120, unique=True)
     image           = models.ImageField(upload_to='accounts/%Y/%m/%d', blank=True)
-    level           = models.CharField(max_length=120, choices=USER_LEVEL, default='Member')
+    level           = models.CharField(max_length=120, choices=USER_LEVEL, default='member')
     admin           = models.BooleanField(default=False)    # superuser
     staff           = models.BooleanField(default=False)    # staff but not superuser
     vendor          = models.BooleanField(default=False)    # user is a seller
@@ -65,7 +68,7 @@ class User(AbstractBaseUser):
     # USERNAME_FIELD and password are required by default.
 
     # Sets fields required at Sign-up
-    # REQUIRED_FIELDS = ['email']
+    REQUIRED_FIELDS = ['email']
 
     objects = UserManager()
 

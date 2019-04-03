@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button';
 
 
 import Heading from "../../../../templates/base/components/Heading";
+import FormFields from "../../../../templates/base/components/utils/FormFields";
+import PostMan from "../../../../templates/base/components/utils/PostMan";
 
 
 const WindowHeight = `${window.innerHeight}px`;
@@ -28,7 +30,6 @@ const Section = styled.div`
     }
 `;
 
-
 const Wrapper = styled.div`
     background: #212121;
         
@@ -48,7 +49,7 @@ const Wrapper = styled.div`
 `;
 
 
-const ContactForm = styled.div`
+const InnerWrapper = styled.div`
     
     @media (min-width: 780px) {
         width: 600px;
@@ -75,29 +76,6 @@ const Intro = styled.div`
 
 const Form = styled.form`
     width: 100%;
-`;
-
-const Element = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    
-`;
-
-const Label = styled.label`
-    color: #22ff22;
-    font-size: 20px;
-    margin-bottom: 3px;
-`;
-
-const Input = styled.input`
-    background: none;
-    border: 2px solid #22ff22;
-    height: 25px;
-    padding: 0 10px;
-    color: #2e7d32;
-    
-    outline: none;
 `;
 
 const Message = styled.textarea`
@@ -148,49 +126,108 @@ class ContactMe extends Component {
             title: 'Contact Me',
             color: '#22ff22'
         },
+
+        postMan: {
+            url: '/contact-me/',
+            data: {},
+            post: false
+        },
+
+        formData:{
+            fullname: {
+                element: 'input',
+                value: '',
+                label: true,
+                labelText: 'Full name',
+                config: {
+                    name: 'fullname_input',
+                    type: 'text',
+                    placeholder: 'Enter your full name'
+                }
+            },
+            email: {
+                element: 'input',
+                value: '',
+                label: true,
+                labelText: 'Email',
+                config: {
+                    name: 'email_input',
+                    type: 'email',
+                    placeholder: 'Enter your email'
+                }
+            },
+            message: {
+                element: 'textarea',
+                value: '',
+                label: true,
+                labelText: 'Message',
+                config: {
+                    name: 'message_input',
+                    type: 'text',
+                    placeholder: 'Enter your message'
+                }
+            }
+        }
     };
+
+    updateForm = (newState) => {
+        this.setState({
+            formData: newState
+        })
+    };
+
+    submitForm = (event) => {
+        event.preventDefault();
+        let dataToSubmit = {};
+        let url = '/contact-me/';
+
+        for (let key in this.state.formData){
+            dataToSubmit[key] = this.state.formData[key].value
+        }
+
+        this.setState({
+            postMan: {
+                url: url,
+                data: dataToSubmit,
+                post: true // Post request to Django server is handled by postMan component.
+            }
+        })
+    };
+
+
 
     render() {
         return (
-            <Section>
+            <Section id='#ContactForm'>
                 <Wrapper>
                     <Heading title={this.state.heading.title} color={this.state.heading.color}/>
 
-                    <ContactForm>
+                    <InnerWrapper>
                         <Intro>
-                            I can help you build and grow your next product.<br/>
-                            Want to discuss a collaboration? Let's build something together!<br/>
-                            Send a message, Lets Talk.
+                            Want to discuss a collaboration or a job? <br/> <br/>
+                            Send a message, Let's build something together!
                         </Intro>
 
-                        <Form>
-                            <Element>
-                                <Label>Full Name</Label>
-                                <Input type='text'/>
-                            </Element>
+                        <Form onSubmit={this.submitForm}>
 
-                            <Element>
-                                <Label>Email</Label>
-                                <Input type='text'/>
-                            </Element>
-
-                            <Element>
-                                <Label>Message</Label>
-                                <Message />
-                            </Element>
+                            <FormFields formData={this.state.formData}
+                                        change={(newState) => this.updateForm(newState)}/>
 
                             <Submit>
                                 <MuiThemeProvider theme={muiTheme}>
-                                    <Button color="primary" href='#'>Send</Button>
+                                    <Button color="primary" type="submit">Send</Button>
                                 </MuiThemeProvider>
                             </Submit>
+
+                            <PostMan {...this.state.postMan}/>
                         </Form>
-                    </ContactForm>
+
+                    </InnerWrapper>
                 </Wrapper>
             </Section>
         );
     }
-}
+};
 
 ContactMe.propTypes = {};
 

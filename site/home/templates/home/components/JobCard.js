@@ -15,7 +15,7 @@ const JobDuration = styled.div`
 `;
 
 const Wrapper = styled.section`
-    height: 250px;
+    // height: 250px;
     background: #212121;
     border: 2px solid #2e7d32;
     border-radius: 3px;

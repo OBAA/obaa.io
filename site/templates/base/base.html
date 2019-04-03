@@ -4,7 +4,7 @@
 {% load render_bundle from webpack_loader %}
 
 {% block header %}
-    <base href="/" />
+{#    <base href="/" />#}
 
     <title>{{title}}</title>
 
@@ -42,7 +42,9 @@
 
 
 
+    <!-- Entry point of React App -->
     {% render_bundle component %}
+
 
 
 {% endblock %}
