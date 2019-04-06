@@ -20,7 +20,7 @@ const Input = styled.input`
     border: 2px solid #22ff22;
     height: 25px;
     padding: 0 10px;
-    color: #2e7d32;
+    color: #22ff22;
     font-size: 12px;
     
     outline: none;
@@ -31,7 +31,7 @@ const Message = styled.textarea`
     border: 2px solid #22ff22;
     height: 200px;
     padding: 10px 10px;
-    color: #2e7d32;
+    color: #22ff22;
     font-size: 13px;
     
     outline: none;

@@ -200,14 +200,17 @@ const Footer = () => {
                 <Links>
                     <Title>Socials</Title>
                     <LinksWrapper>
-                        <Link>
+                        <Link href="https://www.linkedin.com/in/agbana-bolu/" target="_blank">
                             <i className="fab fa-linkedin"> </i> Linkedin
                         </Link>
-                        <Link>
+                        <Link href="https://www.instagram.com/iam.obaa/" target="_blank">
                             <i className="fab fa-instagram"> </i> Instagram
                         </Link>
                         <Link>
                             <i className="fab fa-twitter"> </i> Twitter
+                        </Link>
+                        <Link href="https://github.com/OBAA/" target="_blank">
+                            <i className="fab fa-github"> </i> Github
                         </Link>
                     </LinksWrapper>
                 </Links>
