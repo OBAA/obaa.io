@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import styled from 'styled-components'
 import Heading from '../../../../templates/base/components/Heading';
 
-import webDev1 from '../../../../static/icons/webDev2.png';
-
 
 const WindowHeight = `${window.innerHeight}px`;
 
@@ -45,11 +43,7 @@ const Wrapper = styled.div`
     @media (min-width: 648px) {
         flex-flow: row wrap;        
     }
-    
-    // @media (max-width: 780px) {
-    //     flex-flow: row wrap;
-    // }
-    
+        
     @media (max-width: 647px) {
         flex-direction: column;
         align-items: center;

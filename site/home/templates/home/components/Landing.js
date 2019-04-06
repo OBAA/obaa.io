@@ -1,8 +1,23 @@
 import React from 'react';
 import styled from 'styled-components'
 
+const WindowHeight = `${window.innerHeight}px`;
+const WindowHalfHeight = `${(window.innerHeight/2)}px`;
+
+const Section = styled.div`
+    height: 800px;
+    height: ${WindowHeight};
+    background: #212121;
+`;
+
+const Div = styled.div`
+    position: relative;
+`;
+
 const WrapperOutter = styled.div`
     position: absolute;
+    top: 400px;
+    top: ${WindowHalfHeight};
     left: 50%;
     width: 400px;
     height: 160px;
@@ -85,13 +100,11 @@ const SocialIcons = styled.a`
 
 
 const Landing = () => {
-    let half_height = `${window.innerHeight/2}px`;
 
     return (
-        <div style={{height: '950px', background: '#212121'}}>
-        // {/*<div style={{height: `${window.innerHeight}px`, background: '#212121'}}>*/}
-            <div style={{position: 'relative'}}>
-                <WrapperOutter style={{top: half_height}} >
+        <Section>
+            <Div>
+                <WrapperOutter>
                     <WrapperInner className="font_roboto">
                         <Name>
                             Agbana Bolu
@@ -115,8 +128,8 @@ const Landing = () => {
                         </div>
                     </WrapperInner>
                 </WrapperOutter>
-            </div>
-        </div>
+            </Div>
+        </Section>
     );
 };
 

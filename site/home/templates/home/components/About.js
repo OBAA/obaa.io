@@ -161,6 +161,7 @@ const Div = styled.div`
 const IconWrapper = styled.div`
     width: 50px;
     color: #F0F0F0;
+    color: #2e7d32;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -179,7 +180,10 @@ const IconWrapper = styled.div`
 const StacksBody = styled.div`
     display: flex;
     flex-flow: row wrap;
-    background: #2e7d32;
+    
+    // background: #2e7d32;
+    border: 2px solid #2e7d32;
+    
     border-radius: 5px;
     justify-content: space-evenly;
     align-items: center;

@@ -78,15 +78,15 @@ const Form = styled.form`
     width: 100%;
 `;
 
-const Message = styled.textarea`
-    background: none;
-    border: 2px solid #22ff22;
-    height: 200px;
-    padding: 10px 10px;
-    color: #2e7d32;
-    
-    outline: none;
-`;
+// const Message = styled.textarea`
+//     background: none;
+//     border: 2px solid #22ff22;
+//     height: 200px;
+//     padding: 10px 10px;
+//     color: #2e7d32;
+//
+//     outline: none;
+// `;
 
 const Submit = styled.div`
     display: flex;
@@ -142,7 +142,7 @@ class ContactMe extends Component {
                 config: {
                     name: 'fullname_input',
                     type: 'text',
-                    placeholder: 'Enter your full name'
+                    placeholder: 'enter your full name'
                 }
             },
             email: {
@@ -153,7 +153,7 @@ class ContactMe extends Component {
                 config: {
                     name: 'email_input',
                     type: 'email',
-                    placeholder: 'Enter your email'
+                    placeholder: 'enter your email'
                 }
             },
             message: {
@@ -164,7 +164,7 @@ class ContactMe extends Component {
                 config: {
                     name: 'message_input',
                     type: 'text',
-                    placeholder: 'Enter your message'
+                    placeholder: 'enter your message'
                 }
             }
         }
@@ -227,7 +227,7 @@ class ContactMe extends Component {
             </Section>
         );
     }
-};
+}
 
 ContactMe.propTypes = {};
 
