@@ -4,7 +4,6 @@ import Heading from "../../../../templates/base/components/Heading";
 
 import client1 from '../../../../static/images/client1over3.jpg';
 import client2 from '../../../../static/images/clientAgbanaTolu.jpg';
-import ContactMe from "./ContactMe";
 
 
 const Section = styled.div`
@@ -14,19 +13,18 @@ const Section = styled.div`
 
 const Intro = styled.div`
     display: flex;
+    flex-flow: row wrap;
     justify-content: center;
+    
     height: 45px;
     color: #2e7d32;
-    margin: 25px 0;
+    margin: 25px 0 35px 0;
     font-size: 14px;
     
     @media (max-width: 768px) {
         font-size: 14px;
     }
-    
-    @media (max-width: 500px) {
-        // padding: 10px 20px;
-    }
+
 `;
 
 const Content = styled.span`
@@ -35,13 +33,13 @@ const Content = styled.span`
 
 const Link = styled.a`
     color: #2e7d32;
-    height: 18px;
     font-style: italic;
     font-weight: bolder;
     text-decoration: none;
     padding-left: 10px;
     
     &:hover {
+        height: 18px;
         font-size: 18px;
         margin-left: 10px;
         border-left: 2px solid #2e7d32;
@@ -139,24 +137,28 @@ const Details = styled.a`
     align-items: center;
     justify-content: center;
     padding: 20px;
-    text-decoration: none;
-    background: #2e7d32;
+    text-decoration: none;    
+    background: #212121;
+    color: #2e7d32;
     height: 110px;
     width: 220px;
     
-    color: #F0F0F0
+    &:hover {
+        color: #22ff22;
+        border: 2px solid #22ff22;
+    }
+    
 `;
 
 const Title = styled.div`
     font-size: 20px;
     font-family: roboto;
-    
+    color: #22ff22;
 `;
 
 const Description = styled.div`     
     font-size: 12px;    
     margin-top: 20px;
-       
 `;
 
 
@@ -187,7 +189,6 @@ class RecentWorks extends Component {
 
         const renderProjects = () => {
             const mockups = [];
-            // const
 
             for (let project in projects){
                 mockups.push({
@@ -219,7 +220,6 @@ class RecentWorks extends Component {
             })
 
         };
-
 
 
         return (

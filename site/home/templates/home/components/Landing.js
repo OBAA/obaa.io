@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components'
 
+import bg_image from '../../../../static/images/bg_landing.jpeg'
+
 const WindowHeight = `${window.innerHeight}px`;
 const WindowHalfHeight = `${(window.innerHeight/2)}px`;
 
@@ -12,6 +14,8 @@ const Section = styled.div`
 
 const Div = styled.div`
     position: relative;
+    background: url(${bg_image});
+    height: 100%;
 `;
 
 const WrapperOutter = styled.div`
@@ -24,6 +28,7 @@ const WrapperOutter = styled.div`
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     border: 2px solid #2e7d32;
+    background: #212121;
     
     @media (max-width: 500px) {
         width: 300px;
@@ -37,7 +42,7 @@ const WrapperInner = styled.div`
     margin: 6px;
     text-align: center;
     padding: 21px 70px 0 70px;
-    
+        
     @media (max-width: 500px) {
         height: 90px;
         padding: 14px 25px 0 25px;
