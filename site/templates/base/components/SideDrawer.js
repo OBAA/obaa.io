@@ -5,6 +5,8 @@ import List from '@material-ui/core/List';
 // import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 
+import { scroller } from 'react-scroll';
+
 const SideDrawer = (props) => {
     return (
         <SwipeableDrawer
@@ -17,7 +19,7 @@ const SideDrawer = (props) => {
                 <ListItem button onClick={()=> console.log("Home")}>
                     <a href='/'>Home</a>
                 </ListItem>
-                <ListItem button onClick={()=> console.log("Home")}>
+                <ListItem button onClick={()=> console.log("Blog")}>
                     <a href='/blog'>Blog</a>
                 </ListItem>
                 <ListItem button onClick={()=> console.log("Projects")}>

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import {Element} from 'react-scroll'
+
+
 import Landing from '../components/Landing'
 import About from '../components/About'
 import ContactMe from '../components/ContactMe'
@@ -15,7 +18,9 @@ class Home extends Component {
                 <About/>
                 <RecentWorks/>
                 <Services/>
-                <ContactMe/>
+                <Element name="ContactMe">
+                    <ContactMe/>
+                </Element>
             </div>
         );
     }

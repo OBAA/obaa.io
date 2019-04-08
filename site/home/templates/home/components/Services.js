@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components'
 import Heading from '../../../../templates/base/components/Heading';
+import {scroller} from "react-scroll/modules/index";
 
 
 const Section = styled.div`
@@ -153,6 +154,14 @@ class Services extends Component {
     render() {
         const services = this.state.services;
 
+        const scrollToElement = (element) => {
+                scroller.scrollTo(element, {
+                    duration: 1500,
+                    delay: 100,
+                    smooth: true
+                });
+            };
+
         const renderServices = () =>{
             const servicesArray = [];
 
@@ -179,7 +188,7 @@ class Services extends Component {
                                 {service.serve.description}
                             </Description>
 
-                            <ContactMe href="#ContactMe">
+                            <ContactMe button onClick={()=> scrollToElement('ContactMe')}>
                                 {/*<Chevron className="lnr lnr-chevron-right"></Chevron>*/}
                                 {/*<Chevron className="lnr lnr-chevron-right"></Chevron>*/}
                                 {/*<Chevron className="lnr lnr-chevron-right"></Chevron>*/}
