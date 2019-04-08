@@ -30,7 +30,7 @@ const Section = styled.div`
     }
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.a`
     background: #212121;
         
     @media (min-width: 780px) {
@@ -198,8 +198,8 @@ class ContactMe extends Component {
 
     render() {
         return (
-            <Section id='#ContactForm'>
-                <Wrapper>
+            <Section id='ContactMe'>
+                <Wrapper name='ContactMe'>
                     <Heading title={this.state.heading.title} color={this.state.heading.color}/>
 
                     <InnerWrapper>

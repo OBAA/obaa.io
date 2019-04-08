@@ -5,6 +5,8 @@ import Heading from "../../../../templates/base/components/Heading";
 import client1 from '../../../../static/images/client1over3.jpg';
 import client2 from '../../../../static/images/clientAgbanaTolu.jpg';
 
+import {scroller} from "react-scroll";
+
 
 const Section = styled.div`
     background: #F0F0F0;
@@ -37,11 +39,14 @@ const Link = styled.a`
     font-weight: bolder;
     text-decoration: none;
     padding-left: 10px;
+    margin-left: 10px;
+    
+    width: 150px;
+    height: 15px;
+    font-size: 15px;
     
     &:hover {
-        height: 18px;
-        font-size: 18px;
-        margin-left: 10px;
+        padding-left: 8px;
         border-left: 2px solid #2e7d32;
     }
 `;
@@ -140,7 +145,7 @@ const Details = styled.a`
     text-decoration: none;    
     background: #212121;
     color: #2e7d32;
-    height: 110px;
+    height: 100px;
     width: 220px;
     
     &:hover {
@@ -187,6 +192,14 @@ class RecentWorks extends Component {
     render() {
         const projects = this.state.projects;
 
+        const scrollToElement = (element) => {
+            scroller.scrollTo(element, {
+                duration: 1500,
+                delay: 100,
+                smooth: true
+            });
+        };
+
         const renderProjects = () => {
             const mockups = [];
 
@@ -227,7 +240,9 @@ class RecentWorks extends Component {
                 <Heading title={this.state.heading.title} color={this.state.heading.color}/>
                 <Intro>
                     <Content>Here are a few of my recent Web projects. Want to see more?</Content>
-                    <Link href='#'>Contact me.</Link>
+                    <Link href='#' onClick={()=> scrollToElement('ContactMe')}>
+                        Contact me.
+                    </Link>
                 </Intro>
 
                 <Div>

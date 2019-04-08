@@ -49,7 +49,6 @@ const Chevron = styled.span`
 `;
 
 const Service = styled.div`
-    position: relative;
     height: 350px;
     width: 280px;
 
@@ -65,10 +64,6 @@ const Service = styled.div`
     @media (max-width: 500px) {
         height: 350px;
         width: 280px;
-
-        &:hover {
-            left: 40px;
-        }
     } 
 
     &:hover {
@@ -111,13 +106,14 @@ const Description = styled.div`
     height: 80px;
 `;
 
-const ContactMe = styled.a`   
+const ContactMe = styled.div`   
     font-size: 18px;
+    font-family: roboto;
     text-decoration: none;
     color: #22ff22;
     margin: 15px 0 0 0;
+    cursor: pointer;
     
-    font-family: roboto;
 `;
 
 class Services extends Component {
@@ -155,12 +151,12 @@ class Services extends Component {
         const services = this.state.services;
 
         const scrollToElement = (element) => {
-                scroller.scrollTo(element, {
-                    duration: 1500,
-                    delay: 100,
-                    smooth: true
-                });
-            };
+            scroller.scrollTo(element, {
+                duration: 1500,
+                delay: 100,
+                smooth: true
+            });
+        };
 
         const renderServices = () =>{
             const servicesArray = [];
@@ -188,11 +184,7 @@ class Services extends Component {
                                 {service.serve.description}
                             </Description>
 
-                            <ContactMe button onClick={()=> scrollToElement('ContactMe')}>
-                                {/*<Chevron className="lnr lnr-chevron-right"></Chevron>*/}
-                                {/*<Chevron className="lnr lnr-chevron-right"></Chevron>*/}
-                                {/*<Chevron className="lnr lnr-chevron-right"></Chevron>*/}
-
+                            <ContactMe onClick={()=> scrollToElement('ContactMe')}>
                                 <Chevron>
                                     <span className="lnr lnr-chevron-right"></span>
                                     <span className="lnr lnr-chevron-right"></span>
@@ -208,23 +200,24 @@ class Services extends Component {
         };
 
         return (
-            <Section>
-                <Heading title={this.state.heading.title} color={this.state.heading.color}/>
+            <Section id='Services'>
+                <a name="Services">
+                    <Heading title={this.state.heading.title} color={this.state.heading.color}/>
 
-                <Div>
-                    <Intro>
-                        I freelance in my free time. Lets work on your next project together.
-                    </Intro>
+                    <Div>
+                        <Intro>
+                            I freelance in my free time. Lets work on your next project together.
+                        </Intro>
 
-                    <Wrapper>
-                        {renderServices()}
+                        <Wrapper>
+                            {renderServices()}
 
-                        {/*Hacky Way of fixing Flexbox last Row Alignment*/}
-                        <Service style={{height: 0, border: 0}}/>
-                        <Service style={{height: 0, border: 0}}/>
-                    </Wrapper>
-                </Div>
-
+                            {/*Hacky Way of fixing Flexbox last Row Alignment*/}
+                            <Service style={{height: 0, border: 0}}/>
+                            <Service style={{height: 0, border: 0}}/>
+                        </Wrapper>
+                    </Div>
+                </a>
             </Section>
         );
     }

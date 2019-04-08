@@ -17,7 +17,9 @@ class Home extends Component {
                 <Landing/>
                 <About/>
                 <RecentWorks/>
-                <Services/>
+                <Element name="Services">
+                    <Services/>
+                </Element>
                 <Element name="ContactMe">
                     <ContactMe/>
                 </Element>
